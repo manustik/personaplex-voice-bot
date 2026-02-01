@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Bot - Microphone Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+        }
+        h1 { margin-bottom: 2rem; }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+        #startBtn {
+            background-color: #0071e3;
+            color: white;
+        }
+        #startBtn:hover { background-color: #0077ed; }
+        #startBtn:disabled { background-color: #999; cursor: not-allowed; }
+        
+        #stopBtn {
+            background-color: #ff3b30;
+            color: white;
+        }
+        #stopBtn:hover { background-color: #ff453a; }
+        #stopBtn:disabled { background-color: #999; cursor: not-allowed; }
+
+        .status {
+            padding: 1rem;
+            border-radius: 1rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .log-container {
+            text-align: left;
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .log-entry { margin-bottom: 0.25rem; }
+        .log-error { color: #ff3b30; }
+        .log-info { color: #0071e3; }
+        
+        .indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 0.5rem;
+        }
+        .indicator.active { background-color: #34c759; box-shadow: 0 0 10px #34c759; }
+        .indicator.talking { background-color: #0071e3; box-shadow: 0 0 10px #0071e3; }
+    </style>
+</head>
+<body>
+    <h1>🎙️ Voice Bot Test</h1>
+    
+    <div class="status">
+        <span id="connIndicator" class="indicator"></span>
+        <span id="statusText">Ready to connect</span>
+    </div>
+
+    <div class="controls">
+        <button id="startBtn">Start Call</button>
+        <button id="stopBtn" disabled>End Call</button>
+    </div>
+
+    <div class="log-container" id="logs"></div>
+
+    <script type="module" src="client.js"></script>
+</body>
+</html>
