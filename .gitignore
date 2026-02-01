@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+**/venv/
+**/.venv/
+
+# Build output
+dist/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+coverage/
+
+# AI Models & Weights
+offload_weights/
+**/*.bin
+**/*.pt
+
+# Temporary files & Audio
+*.tmp
+*.temp
+*.pcm
+*.wav
