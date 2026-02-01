@@ -1,0 +1,59 @@
+{
+  "name": "@manus/voice-bot",
+  "version": "0.1.0",
+  "description": "Modular voice bot integrating PersonaPlex with Twilio Media Streams",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "tsx watch src/server/start.ts",
+    "mock-server": "tsx examples/mock-server.ts",
+    "dev:mic": "concurrently -k -n \"MOCK,BRIDGE\" -c \"magenta,green\" \"npm run mock-server\" \"cross-env PERSONAPLEX_URL=ws://localhost:8998 tsx src/server/start.ts\"",
+    "dev:ai": "concurrently -k -n \"MOSHI,BRIDGE\" -c \"blue,green\" \"tsx scripts/start-moshi.js\" \"cross-env PERSONAPLEX_URL=ws://localhost:8998 tsx src/server/start.ts\"",
+    "build": "tsc",
+    "start": "node dist/server/index.js",
+    "test": "vitest",
+    "test:local": "tsx examples/local-test.ts",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "voice-bot",
+    "twilio",
+    "personaplex",
+    "speech-to-speech",
+    "ai",
+    "nvidia"
+  ],
+  "author": "Manus",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/static": "^9.0.0",
+    "@fastify/websocket": "^11.0.1",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "opusscript": "^0.1.1",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "twilio": "^5.4.3",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "@types/ws": "^8.5.14",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
